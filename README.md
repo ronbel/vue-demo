@@ -1,4 +1,4 @@
-# sample-project
+# Vue Demo for Storrsoft
 
 ## Project setup
 ```
