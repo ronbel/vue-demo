@@ -1,5 +1,5 @@
 import uuid from 'uuid/v1';
-
+import Vue from 'vue';
 
 const state = {
     todoList: []
@@ -10,7 +10,7 @@ const getters = {
         return state.todoList;
     },
     urgentTodos(state){
-        return state.todoList.filter(x => x.urgent);
+        return state.todoList.filter(x => x.urgent && !x.completed);
     }
 };
 
@@ -23,18 +23,15 @@ const mutations = {
     },
     toggleComplete(state, payload){
         let itemIndex = state.todoList.findIndex(x => x.id === payload);
-        state.todoList[itemIndex].completed = !state.todoList[itemIndex].completed;
-        state.todoList = [...state.todoList]
+        Vue.set(state.todoList[itemIndex], 'completed', !state.todoList[itemIndex].completed)
     },
     toggleUrgent(state,payload){
         let itemIndex = state.todoList.findIndex(x => x.id === payload);
-        state.todoList[itemIndex].urgent = !state.todoList[itemIndex].urgent;
-        state.todoList = [...state.todoList]
+        Vue.set(state.todoList[itemIndex], 'urgent', !state.todoList[itemIndex].urgent)
     },
     changeTitle(state, payload){
         let itemIndex = state.todoList.findIndex(x => x.id === payload.id);
-        state.todoList[itemIndex].title = payload.title;
-        state.todoList = [...state.todoList]
+        Vue.set(state.todoList[itemIndex], 'title', payload.title)
     }
 };
 

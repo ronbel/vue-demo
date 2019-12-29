@@ -11,7 +11,7 @@
         </div>
 
         <div class="buttons-container">
-            <div @click="editMode = true, editedTitle = item.title" class="button-icon edit">
+            <div @click="editMode = !editMode, editedTitle = item.title" class="button-icon edit">
             </div>
             <div @click="deleteTodo(item.id)" class="button-icon delete">
             </div>
@@ -66,6 +66,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex: 1;
     }
 
     .checkbox{

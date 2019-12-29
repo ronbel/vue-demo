@@ -36,6 +36,7 @@
         text-decoration-line: none;
         background-color: $pewter-blue;
         color: black;
+        transition: background-color 300ms ease, color 300ms ease;
 
         &.router-link-active{
             background-color: $deep-koamaru;
